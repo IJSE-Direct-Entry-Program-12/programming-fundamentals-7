@@ -16,20 +16,25 @@ void insertionSort(int[] nums) {
         if (value > nums[k]) continue;
 
         int insertionIndex = k;         // ?
-        boolean shift = false;
+        //boolean shift = false;
         for (int i = 0; i < (k + 1); i++) {
             // Search
-            if (nums[i] > value && !shift) {
+            if (nums[i] > value) {
                 insertionIndex = i;
-                shift = true;
+                break;
+                //shift = true;
             }
-            // Shift
-            if (shift) {
-                nums[(k + 1) - (i - insertionIndex)] = nums[(k + 1) - ((i - insertionIndex)) - 1];
-            }
+//            // Shift
+//            if (shift) {
+//                nums[(k + 1) - (i - insertionIndex)] = nums[(k + 1) - ((i - insertionIndex)) - 1];
+//            }
         }
+
+        for (int i = k + 1; i > insertionIndex ; i--) {
+            nums[i] = nums[i - 1];
+        }
+
         // Replace
         nums[insertionIndex] = value;
-        return;
     }
 }
